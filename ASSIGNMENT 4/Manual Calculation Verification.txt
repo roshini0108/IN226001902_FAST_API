@@ -1,0 +1,99 @@
+Manual Calculation Verification – Cart System
+
+All cart subtotals and grand totals returned by the FastAPI endpoints were verified manually.
+
+ Q1 – Adding Items to Cart
+
+Wireless Mouse
+Price = ₹499
+Quantity = 2
+
+Subtotal calculation:
+499 × 2 = ₹998
+
+Notebook
+Price = ₹99
+Quantity = 1
+
+Subtotal calculation:
+99 × 1 = ₹99
+
+---
+
+ Q2 – Cart Grand Total
+
+Wireless Mouse subtotal = ₹998
+Notebook subtotal = ₹99
+
+Grand Total calculation:
+998 + 99 = ₹1097
+
+The API response from GET /cart correctly returned:
+
+item_count = 2
+grand_total = 1097
+
+---
+
+ Q4 – Updated Quantity
+
+Wireless Mouse quantity increased from 2 → 3
+
+Subtotal calculation:
+499 × 3 = ₹1497
+
+Grand Total calculation:
+
+Mouse subtotal = ₹1497
+Notebook subtotal = ₹99
+
+1497 + 99 = ₹1596
+
+The API response correctly returned grand_total = 1596.
+
+---
+
+ Q5 – After Removing Notebook
+
+Remaining item in cart:
+
+Wireless Mouse
+Price = ₹499
+Quantity = 3
+
+Total calculation:
+499 × 3 = ₹1497
+
+Checkout response correctly returned grand_total = 1497.
+
+---
+
+ Q6 – Customer 1
+
+Wireless Mouse = 499 × 1 = ₹499
+Pen Set = 49 × 3 = ₹147
+
+Grand Total calculation:
+499 + 147 = ₹646
+
+The API response correctly returned grand_total = 646.
+
+---
+
+ Q6 – Customer 2
+
+Notebook = 99 × 2 = ₹198
+Wireless Mouse = 499 × 1 = ₹499
+
+Notebook was removed before checkout.
+
+Final total calculation:
+₹499
+
+The API response correctly returned grand_total = 499.
+
+---
+
+Conclusion
+
+All API responses for subtotals and grand totals matched the manual calculations, confirming that the cart logic and checkout calculations work correctly.
